@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PING</title>
+    <style>
+.table-container {
+              border: 1px solid #ccc;
+              border-radius: 10px;
+              padding: 10px;
+              text-align: center;
+          }
+          table {
+              width: 40%;
+              border-collapse: collapse;
+              background-color: #fff;
+              text-align: center;
+              
+          }
+          table th, table td {
+              border: 1px solid #ccc;
+              padding: 10px;
+              text-align: center;
+          }
+          th {
+              background-color: #007BFF;
+              color: white;
+              width:20%;
+              text-align: center;
+          }
+          .green, .red {
+             width: 20px;
+              height: 20px;
+              text-align: center;
+          }
+          .green {
+              background-color: green;
+          }
+          .red {
+              background-color: red;
+          }
+    </style>
+</head>
+<body>
+    <h1>Servicio de Ping</h1>
+    <div class="table-container">
+        <table>
+            <tr>
+                <th>IP</th>
+                <th>Estado Ping</th>
+            </tr>
+            {% for ip, status in results %}
+                <tr>
+                    <td>{{ ip }}</td>
+                    <td class="{{ 'green' if status == 'Ping OK' else 'red' }}"></td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+    <script>
+        setTimeout(function(){
+            location.reload();
+        }, 55000);
+    </script>
+</body>
+</html>
